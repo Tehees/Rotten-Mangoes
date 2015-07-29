@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  
+
   def index
     @movies = Movie.all
   end
@@ -45,8 +45,7 @@ class MoviesController < ApplicationController
   protected
 
   def movie_params
-    params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
-    )
+    params.require(:movie).permit(:title, :director, :runtime_in_minutes, :description, :poster_image_url, :release_date, :image, :remove_image)
   end
+
 end

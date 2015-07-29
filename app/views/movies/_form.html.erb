@@ -27,7 +27,18 @@
   </div>
   <div>
     <%= f.label "poster_image_url" %><br>
-    <%= f.text_field "poster_image_url" %>
+    <%= f.text_field "poster_image_url" %><br>
+    <%= image_tag @movie.poster_image_url if @movie.poster_image_url %>
+  </div>
+
+  <div>
+    <%= f.label "upload an image" %><br>
+    <%= f.file_field :image %><br>
+    <%= image_tag @movie.image_url(:thumb) if @movie.image? %>
+    <label>
+    <%= f.check_box :remove_image %>
+    Remove image
+    </label>
   </div>
   <div>
     <%= f.label "description" %><br>

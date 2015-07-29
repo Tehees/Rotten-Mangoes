@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
@@ -25,6 +24,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
+
+# Use Carrierwave for image upload
+gem "rmagick"
+gem "carrierwave"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

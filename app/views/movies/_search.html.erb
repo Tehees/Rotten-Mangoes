@@ -1,0 +1,9 @@
+<%= form_tag search_movies_path, method: :get do %>
+  <%= label_tag "Search by title:" %>
+  <%= search_field(:query, :title) %>
+  <%= label_tag "Search by director:" %>
+  <%= search_field(:query, :director) %>
+  <%= select_tag(:runtime, options_for_select(
+  [["", 0], ["Under 90 minutes", 1], ["Between 90 and 120 minutes", 2], ["Over 120 minutes", 3]])) %>
+  <%= submit_tag("Search") %>
+<% end %>

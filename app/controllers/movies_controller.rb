@@ -1,7 +1,34 @@
 class MoviesController < ApplicationController
 
+  skip_before_action :restrict_access, only: [:index, :show, :search]
+
   def index
-    @movies = Movie.all.paginate(page: params[:page], per_page: 1)
+    @movies = Movie.all.paginate(page: params[:page], per_page: 2)
+  end
+
+  def search
+    query = params[:query]
+
+    case params[:runtime].to_i
+    when 0
+      range = 0
+    when 1
+      range = 0...90
+    when 2
+      range = 90..120
+    when 3
+      range = 120...1000
+      # TODO:
+    end
+
+    @movies = Movie.where("(lower(title) LIKE ? OR lower(director) LIKE ?) ", "%#{query[:title]}%", "%#{query[:director]}%").where(runtime_in_minutes: (range))
+    if @movies.any?
+      flash.now.alert = "found #{@movies.size} movies with #{params[:query]}"
+      # why doesn't notice work here?
+      render :index
+    else
+      redirect_to movies_path, notice: "No movies found under #{params[:query]}"
+    end
   end
 
   def show

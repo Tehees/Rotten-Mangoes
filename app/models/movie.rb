@@ -19,6 +19,12 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  def self.search(search, page)
+  paginate :per_page => 5, :page => page,
+           :conditions => ['name like ?', "%#{search}%"],
+           :order => 'name'
+  end
+
   protected
 
   def release_date_is_in_the_future

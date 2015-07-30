@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "rmagick"
 gem "carrierwave"
 
+gem 'will_paginate'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
